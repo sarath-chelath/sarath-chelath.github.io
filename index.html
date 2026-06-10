@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0f">
+<title>Sarath Chelath — Cloud Engineer</title>
+<meta name="description" content="Sarath Chelath — Cloud Engineer, Bengaluru. Personal portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f;
+  --bg2:#101019;
+  --card:rgba(255,255,255,.045);
+  --border:rgba(255,255,255,.09);
+  --gold:#d9b36a;
+  --gold2:#f0d9a8;
+  --text:#e9e6df;
+  --muted:#9b97a8;
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Outfit',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.75;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(60% 40% at 80% 0%, rgba(217,179,106,.07), transparent 60%),
+    radial-gradient(50% 35% at 10% 90%, rgba(120,90,200,.06), transparent 60%);
+}
+::selection{background:rgba(217,179,106,.3)}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;
+  padding-top:calc(14px + env(safe-area-inset-top));
+  background:rgba(10,10,15,.7);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s;
+}
+nav.scrolled{border-bottom-color:var(--border)}
+.logo{font-family:var(--serif);font-size:1.25rem;font-weight:600;letter-spacing:.06em;color:var(--gold)}
+.nav-links{display:flex;gap:18px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color .25s}
+.nav-links a:active,.nav-links a:hover{color:var(--gold2)}
+
+/* ---------- sections ---------- */
+section{padding:64px 22px;max-width:680px;margin:0 auto}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:12px;
+}
+.eyebrow::after{content:'';height:1px;width:48px;background:linear-gradient(90deg,var(--gold),transparent)}
+h2{font-family:var(--serif);font-size:2.1rem;font-weight:600;line-height:1.15;margin-bottom:22px}
+h2 em{color:var(--gold2);font-style:italic}
+p.body{color:var(--muted);font-size:.95rem;margin-bottom:16px}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0;max-width:none;position:relative;overflow:hidden;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background:url('photos/photo-01.jpg') center 18%/cover no-repeat;
+  animation:slowzoom 12s ease-out forwards;
+}
+@keyframes slowzoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(10,10,15,.35) 0%, rgba(10,10,15,.05) 35%, rgba(10,10,15,.55) 70%, var(--bg) 98%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 24px 56px;max-width:680px;margin:0 auto;width:100%;
+}
+.hero .eyebrow{animation:rise .9s .2s both}
+.hero h1{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(2.8rem,12vw,4.6rem);
+  line-height:1.02;letter-spacing:.01em;
+  animation:rise .9s .35s both;
+}
+.hero h1 span{
+  display:block;
+  background:linear-gradient(100deg,var(--gold2),var(--gold) 60%,#a8853f);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-role{
+  margin-top:14px;font-size:.95rem;color:var(--text);
+  display:flex;align-items:center;gap:10px;
+  animation:rise .9s .5s both;
+}
+.hero-role::before{content:'';width:34px;height:1px;background:var(--gold)}
+.hero-socials{display:flex;gap:12px;margin-top:26px;animation:rise .9s .65s both}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:100px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  color:var(--text);text-decoration:none;font-size:.82rem;letter-spacing:.04em;
+  transition:transform .2s,border-color .2s;
+}
+.chip:active{transform:scale(.96);border-color:var(--gold)}
+.chip svg{width:15px;height:15px;fill:var(--gold)}
+.scroll-hint{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  z-index:3;color:var(--muted);font-size:1.2rem;
+  animation:bob 2s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ---------- reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- about ---------- */
+.traits{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.trait{
+  font-size:.76rem;letter-spacing:.05em;padding:7px 14px;border-radius:100px;
+  border:1px solid rgba(217,179,106,.35);color:var(--gold2);
+  background:rgba(217,179,106,.07);
+}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:26px}
+.fact{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:16px 14px;
+}
+.fact b{display:block;font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--gold2);margin-bottom:2px}
+.fact span{font-size:.74rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+
+/* ---------- gallery ---------- */
+#gallery{max-width:none;padding-left:0;padding-right:0}
+#gallery .head{max-width:680px;margin:0 auto;padding:0 22px}
+.strip{
+  display:flex;gap:14px;overflow-x:auto;
+  padding:26px 22px 12px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.strip::-webkit-scrollbar{display:none}
+.strip .ph{
+  flex:0 0 auto;width:min(72vw,300px);aspect-ratio:3/4;
+  border-radius:20px;overflow:hidden;position:relative;
+  scroll-snap-align:center;
+  border:1px solid var(--border);
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+}
+.strip .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.strip .ph:active img{transform:scale(1.04)}
+.strip .ph .num{
+  position:absolute;top:10px;left:10px;
+  font-family:var(--serif);font-size:.8rem;color:var(--gold2);
+  background:rgba(10,10,15,.55);backdrop-filter:blur(6px);
+  border:1px solid rgba(217,179,106,.3);
+  padding:2px 10px;border-radius:100px;letter-spacing:.1em;
+}
+.swipe-note{text-align:center;color:var(--muted);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;margin-top:8px}
+
+/* ---------- biodata ---------- */
+.bio-card{
+  border-radius:22px;overflow:hidden;
+  border:1px solid rgba(217,179,106,.3);
+  box-shadow:0 24px 60px rgba(0,0,0,.5);
+  position:relative;cursor:pointer;
+}
+.bio-card img{width:100%;display:block}
+.bio-card .tap{
+  position:absolute;bottom:12px;right:12px;
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(10,10,15,.7);backdrop-filter:blur(8px);
+  border:1px solid var(--border);color:var(--gold2);
+  padding:7px 14px;border-radius:100px;
+}
+
+/* ---------- partner ---------- */
+.quote-card{
+  background:linear-gradient(140deg, rgba(217,179,106,.1), rgba(255,255,255,.03));
+  border:1px solid rgba(217,179,106,.25);
+  border-radius:22px;padding:28px 24px;position:relative;
+}
+.quote-card::before{
+  content:'“';position:absolute;top:-6px;left:18px;
+  font-family:var(--serif);font-size:5rem;color:rgba(217,179,106,.35);line-height:1;
+}
+.quote-card p{color:var(--text);font-size:.95rem}
+.quote-card p+p{margin-top:14px;color:var(--muted)}
+
+/* ---------- contact ---------- */
+.contact-list{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.c-item{
+  display:flex;align-items:center;gap:16px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:18px;padding:16px 18px;
+  text-decoration:none;color:var(--text);
+  transition:transform .2s,border-color .2s;
+}
+.c-item:active{transform:scale(.98);border-color:var(--gold)}
+.c-item .ic{
+  width:42px;height:42px;border-radius:12px;flex:0 0 auto;
+  display:grid;place-items:center;
+  background:rgba(217,179,106,.12);border:1px solid rgba(217,179,106,.3);
+}
+.c-item .ic svg{width:19px;height:19px;fill:var(--gold)}
+.c-item small{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.c-item span{font-size:.95rem}
+
+footer{
+  text-align:center;padding:36px 20px 46px;color:var(--muted);font-size:.78rem;
+  border-top:1px solid var(--border);margin-top:30px;
+}
+footer .sig{font-family:var(--serif);font-size:1.4rem;color:var(--gold);margin-bottom:6px;letter-spacing:.04em}
+
+/* ---------- lightbox ---------- */
+.lightbox{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(5,5,8,.96);
+  display:none;align-items:center;justify-content:center;
+  touch-action:pinch-zoom;
+}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100vw;max-height:100vh;object-fit:contain}
+.lightbox .close{
+  position:absolute;top:calc(14px + env(safe-area-inset-top));right:16px;
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:1px solid var(--border);
+  color:var(--text);font-size:1.2rem;display:grid;place-items:center;
+}
+
+@media(min-width:760px){
+  section{padding:90px 22px}
+  .nav-links{gap:28px}
+  .strip .ph{width:300px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo">SC</div>
+  <div class="nav-links">
+    <a href="#about">About</a><a href="#gallery">Photos</a><a href="#biodata">Bio Data</a><a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Hello, I'm</div>
+    <h1>Sarath <span>Chelath</span></h1>
+    <div class="hero-role">Cloud Engineer · Bengaluru</div>
+    <div class="hero-socials">
+      <a class="chip" href="https://www.instagram.com/sarath_chelath" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.18 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.73 2.7 21.31.27 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+        Instagram
+      </a>
+      <a class="chip" href="https://www.linkedin.com/in/sarath-chelath-476557191/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint">▾</div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <div class="eyebrow">About Me</div>
+    <h2>A little about <em>my world</em></h2>
+    <p class="body">I work as a Cloud Engineer in Bengaluru. My family includes my father, mother, and my sister, who is happily married and works in the IT industry.</p>
+    <p class="body">I'm a kind-hearted, caring, and fun-loving person who strongly believes in mutual understanding and open communication. I was a boxing champion at university, and I trade in the stock and crypto markets. I really enjoy photography and listening to music, love cooking and trying new recipes, and I love traveling to dense green forests and hilly regions — especially to enjoy the rain and snow.</p>
+    <p class="body">I'm straightforward, active, and courageous — someone who can confidently face hard challenges in life. As for weaknesses: a big soft spot for tasty fast food, and losing loved ones is a bit hard for me to move on from.</p>
+    <div class="traits">
+      <span class="trait">☁️ Cloud Engineer</span><span class="trait">🥊 Boxing Champion</span>
+      <span class="trait">📈 Trader</span><span class="trait">📷 Photography</span>
+      <span class="trait">🎵 Music</span><span class="trait">👨‍🍳 Cooking</span>
+      <span class="trait">🌧️ Rain &amp; Hills</span>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>Bengaluru</b><span>Based in</span></div>
+      <div class="fact"><b>Cloud Engineer</b><span>Profession</span></div>
+      <div class="fact"><b>Open-minded</b><span>Outlook</span></div>
+      <div class="fact"><b>Family-first</b><span>Values</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="head reveal">
+    <div class="eyebrow">Gallery</div>
+    <h2>Moments &amp; <em>memories</em></h2>
+  </div>
+  <div class="strip" id="strip"></div>
+  <div class="swipe-note">← swipe →</div>
+</section>
+
+<!-- BIODATA -->
+<section id="biodata">
+  <div class="reveal">
+    <div class="eyebrow">Bio Data</div>
+    <h2>Family <em>bio data</em></h2>
+    <div class="bio-card" onclick="openLB('photos/biodata.jpg')">
+      <img src="photos/biodata.jpg" alt="Bio data" loading="lazy">
+      <div class="tap">Tap to enlarge</div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER -->
+<section id="partner">
+  <div class="reveal">
+    <div class="eyebrow">Life Partner</div>
+    <h2>What I'm <em>looking for</em></h2>
+    <div class="quote-card">
+      <p>Someone ready to build a fresh start together — someone who can be my best friend for life. I deeply believe in treating each other with mutual respect and always having open communication.</p>
+      <p>I'm not much concerned about physical appearance, caste, or family background. What truly matters to me is being ready to support each other through all of life's ups and downs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="eyebrow">Get in Touch</div>
+    <h2>Let's <em>connect</em></h2>
+    <div class="contact-list">
+      <a class="c-item" href="tel:+918943939778">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.02z"/></svg></div>
+        <div><small>Mobile</small><span>+91 89439 39778</span></div>
+      </a>
+      <a class="c-item" href="tel:+919746703429">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.02z"/></svg></div>
+        <div><small>Alternate</small><span>+91 97467 03429</span></div>
+      </a>
+      <a class="c-item" href="https://wa.me/918943939778" target="_blank" rel="noopener">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12.04 2A9.93 9.93 0 0 0 2.1 11.93a9.84 9.84 0 0 0 1.34 4.99L2 22l5.21-1.37a9.94 9.94 0 0 0 4.83 1.23h.01a9.94 9.94 0 0 0 9.94-9.93A9.93 9.93 0 0 0 12.04 2zm5.84 14.17c-.25.7-1.45 1.34-2 1.39-.55.05-1.06.25-3.58-.74-3.02-1.19-4.93-4.27-5.08-4.47-.15-.2-1.21-1.61-1.21-3.07s.77-2.18 1.04-2.48c.27-.3.59-.37.79-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.06.92 2.21.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.61.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.12.64-.07.17-.2.74-.86.94-1.16.2-.3.39-.25.66-.15.27.1 1.72.81 2.02.96.3.15.49.22.57.35.07.12.07.72-.18 1.42z"/></svg></div>
+        <div><small>WhatsApp</small><span>Message me</span></div>
+      </a>
+      <a class="c-item" href="mailto:scamcarching@gmail.com">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></div>
+        <div><small>Email</small><span>scamcarching@gmail.com</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="sig">Sarath Chelath</div>
+  sarath_chelath · made with care
+</footer>
+
+<div class="lightbox" id="lb" onclick="closeLB()">
+  <button class="close">✕</button>
+  <img id="lbimg" src="" alt="">
+</div>
+
+<script>
+// ---- gallery: auto-discovers photos/photo-01.jpg ... photo-30.jpg ----
+// Rename/renumber files to reorder; add photo-11.jpg etc. to add more. Gaps are OK.
+(function(){
+  const strip = document.getElementById('strip');
+  const MAX = 30;
+  const checks = [];
+  for(let i=1;i<=MAX;i++){
+    const n = String(i).padStart(2,'0');
+    const src = `photos/photo-${n}.jpg`;
+    checks.push(new Promise(res=>{
+      const im = new Image();
+      im.onload = ()=>res({n,src});
+      im.onerror = ()=>res(null);
+      im.src = src;
+    }));
+  }
+  Promise.all(checks).then(list=>{
+    list.filter(Boolean).forEach(({n,src})=>{
+      const d = document.createElement('div');
+      d.className = 'ph';
+      d.innerHTML = `<img src="${src}" alt="Photo ${n}" loading="lazy"><div class="num">${n}</div>`;
+      d.onclick = ()=>openLB(src);
+      strip.appendChild(d);
+    });
+  });
+})();
+
+// ---- lightbox ----
+function openLB(src){
+  document.getElementById('lbimg').src = src;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLB(){
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ---- scroll reveal ----
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// ---- nav border ----
+addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled', scrollY>30);
+},{passive:true});
+</script>
+</body>
+</html>
